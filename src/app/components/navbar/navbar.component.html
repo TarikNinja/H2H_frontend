@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+  <title>Page avec Modal d'Inscription</title>
+  <style>
+    .search-bar {
+      position: relative; /* Positionnement pour l'icône */
+      width: 100%; /* Largeur complète */
+      max-width: 290px; /* Largeur maximale */
+      margin: auto; /* Centrage */
+      right: 280px;
+    }
+
+    .search-bar input {
+      width: 100%; /* Largeur du champ */
+      padding: 5px 40px 5px 10px; /* Espacement intérieur avec place pour l'icône */
+      border-radius: 25px; /* Bords arrondis */
+      border: 0.5px solid #ddd; /* Bordure légère */
+      outline: none; /* Pas de contour lors de la mise au focus */
+      background-color: #f6f6f6; /* Couleur de fond */
+      font-size: 16px; /* Taille du texte */
+      color: #6c757d; /* Couleur du texte */
+    }
+
+    .search-bar input::placeholder {
+      color: #aaa; /* Couleur du placeholder */
+    }
+
+    .search-bar i {
+      position: absolute; /* Positionnement relatif au parent */
+      top: 50%; /* Centré verticalement */
+      right: 15px; /* Espace à droite */
+      transform: translateY(-50%); /* Alignement vertical parfait */
+      color: #aaa; /* Couleur de l'icône */
+      font-size: 18px; /* Taille de l'icône */
+      pointer-events: none; /* Rendre l'icône non cliquable */
+    }
+
+    .custom-btn {
+      background-color: #fd7e14; /* Couleur de fond */
+      color: black; /* Couleur du texte */
+      border: none; /* Pas de bordure */
+      border-radius: 5px; /* Coins légèrement arrondis */
+      padding: 8px 16px; /* Espacement intérieur */
+      font-size: 16px; /* Taille du texte */
+      cursor: pointer; /* Curseur en main au survol */
+    }
+
+    .custom-btn:hover {
+      background-color: #e06b10; /* Couleur de fond légèrement plus sombre au survol */
+    }
+
+    .btn-outline-custom {
+      color: black; /* Couleur du texte */
+      border: 2px solid #fd7e14; /* Couleur de la bordure */
+      background-color: transparent; /* Fond transparent */
+      padding: 8px 16px; /* Espacement intérieur */
+      border-radius: 5px; /* Coins légèrement arrondis */
+      font-size: 16px; /* Taille du texte */
+      cursor: pointer; /* Curseur en main au survol */
+      transition: background-color 0.3s, color 0.3s; /* Animation au survol */
+    }
+
+    .btn-outline-custom:hover {
+      background-color: #fd7e14; /* Fond orange au survol */
+      color: black; /* Texte blanc au survol */
+    }
+
+    .icon-color {
+      color: #fd7e14; /* Couleur personnalisée pour les icônes */
+    }
+
+    .card {
+      border: 2px solid #fd7e14; /* Ajout d'un cadre de couleur orange */
+      border-radius: 10px; /* Coins arrondis pour le cadre */
+    }
+  </style>
+</head>
+<body>
+<!-- Navbar -->
+<nav class="navbar bg-body-tertiary">
+  <div class="container">
+    <a class="navbar-brand" href="#">
+      <img src="assets/images/H2HLogo.png" width="30" height="24" alt="Logo H2H">
+    </a>
+    <form class="search-bar" role="search">
+      <input type="search" placeholder="Rechercher" aria-label="Search">
+      <i class="fas fa-search"></i>
+    </form>
+    <form class="d-flex mb-2 mb-lg-0">
+      <button class="btn custom-btn me-2" type="button">Je crée une annonce</button>
+      <button class="btn btn-outline-custom" type="button" data-bs-target="#exampleModalToggle" data-bs-toggle="modal">S'inscrire / Se connecter</button>
+    </form>
+  </div>
+</nav>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title text-center" id="exampleModalLabel">Inscription</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="container d-flex justify-content-center align-items-center">
+          <div class="card p-4 shadow-lg" style="width: 400px;">
+            <form>
+              <div class="mb-3">
+                <label class="form-label">Nom :</label>
+                <input type="text" class="form-control" placeholder="Entrez votre nom" required>
+              </div>
+
+              <div class="mb-3">
+                <label class="form-label">Email :</label>
+                <input type="email" class="form-control" placeholder="Entrez votre email" required>
+              </div>
+
+              <div class="mb-3">
+                <label class="form-label">Mot de passe :</label>
+                <input type="password" class="form-control" placeholder="Créez un mot de passe" required>
+              </div>
+
+              <button type="submit" class="btn btn-custom mb-4">S'inscrire</button>
+            </form>
+
+            <div class="text-center mt-3">
+              <button type="button" class="btn btn-link btn-floating mx-1">
+                <i class="fab fa-facebook-f icon-color"></i>
+              </button>
+              <button type="button" class="btn btn-link btn-floating mx-1">
+                <i class="fab fa-google icon-color"></i>
+              </button>
+              <button type="button" class="btn btn-link btn-floating mx-1">
+                <i class="fab fa-twitter icon-color"></i>
+              </button>
+              <button type="button" class="btn btn-link btn-floating mx-1">
+                <i class="fab fa-youtube icon-color"></i>
+              </button>
+            </div>
+
+            <div class="text-center mt-3">
+              <a href="/login">J'ai déjà un compte</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="modal fade" id="exampleModalToggle" aria-labelledby="exampleModalToggleLabel" tabindex="-1" style="display: none;" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalToggleLabel">Modal 1</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Show a second modal and hide this one with the button below.
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-primary" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal">Open second modal</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="exampleModalToggle2" aria-labelledby="exampleModalToggleLabel2" tabindex="-1" style="display: none;" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalToggleLabel2">Modal 2</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Hide this modal and show the first with the button below.
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-primary" data-bs-target="#exampleModalToggle" data-bs-toggle="modal">Back to first</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Scripts Bootstrap -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
