@@ -1,0 +1,132 @@
+.search-bar {
+  position: relative; /* Positionnement pour l'icône */
+  width: 100%; /* Largeur complète */
+  max-width: 290px; /* Largeur maximale */
+  margin: auto; /* Centrage */
+  right: 280px;
+}
+
+.search-bar input {
+  width: 100%; /* Largeur du champ */
+  padding: 5px 40px 5px 10px; /* Espacement intérieur avec place pour l'icône */
+  border-radius: 25px; /* Bords arrondis */
+  border: 0.5px solid #ddd; /* Bordure légère */
+  outline: none; /* Pas de contour lors de la mise au focus */
+  background-color: #f6f6f6; /* Couleur de fond */
+  font-size: 16px; /* Taille du texte */
+  color: #6c757d; /* Couleur du texte */
+}
+
+.search-bar input::placeholder {
+  color: #aaa; /* Couleur du placeholder */
+}
+
+.search-bar i {
+  position: absolute; /* Positionnement relatif au parent */
+  top: 50%; /* Centré verticalement */
+  right: 15px; /* Espace à droite */
+  transform: translateY(-50%); /* Alignement vertical parfait */
+  color: #aaa; /* Couleur de l'icône */
+  font-size: 18px; /* Taille de l'icône */
+  pointer-events: none; /* Rendre l'icône non cliquable */
+}
+
+.custom-btn {
+  background-color: #fd7e14; /* Couleur de fond */
+  color: black; /* Couleur du texte */
+  border: none; /* Pas de bordure */
+  border-radius: 5px; /* Coins légèrement arrondis */
+  padding: 8px 16px; /* Espacement intérieur */
+  font-size: 16px; /* Taille du texte */
+  cursor: pointer; /* Curseur en main au survol */
+}
+
+.custom-btn:hover {
+  background-color: #e06b10; /* Couleur de fond légèrement plus sombre au survol */
+}
+
+.btn-outline-custom {
+  color: black; /* Couleur du texte */
+  border: 2px solid #fd7e14; /* Couleur de la bordure */
+  background-color: transparent; /* Fond transparent */
+  padding: 8px 16px; /* Espacement intérieur */
+  border-radius: 5px; /* Coins légèrement arrondis */
+  font-size: 16px; /* Taille du texte */
+  cursor: pointer; /* Curseur en main au survol */
+  transition: background-color 0.3s, color 0.3s; /* Animation au survol */
+}
+
+.btn-outline-custom:hover {
+  background-color: #fd7e14; /* Fond orange au survol */
+  color: black; /* Texte blanc au survol */
+}
+
+.modal-dialog {
+  max-width: 40%; /* 90% de la largeur de l'écran */
+}
+
+
+
+.search-bar-container {
+  position: relative;
+  flex-grow: 1;
+  margin: 0 1rem;
+}
+
+.search-bar {
+  display: flex;
+  align-items: center;
+  border: 1px solid #ccc;
+  border-radius: 40px;
+  padding: 0.2rem;
+}
+
+.search-bar input {
+  width: 100%;
+  border: none;
+  outline: none;
+}
+
+.search-btn {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  margin-left: 0.5rem;
+  color: #333;
+}
+
+.search-results-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.9);
+  border: 1px solid #ccc;
+  border-radius: 40px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 1;
+}
+
+.search-results-dropdown ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0.5rem 0;
+  border-radius: 40px;
+}
+
+.search-results-dropdown li a {
+  display: block;
+  padding: 0.5rem 1rem;
+  text-decoration: none;
+  border-radius: 40px;
+  color: #333;
+}
+
+.search-results-dropdown li a:hover {
+  background-color: #f5f5f5;
+  border-radius: 40px;
+}
+
+.navbar-actions .btn {
+  margin-left: 0.5rem;
+}

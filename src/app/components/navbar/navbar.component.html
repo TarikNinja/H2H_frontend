@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <title>Page avec Modal d'Inscription</title>
+</head>
+<body>
+<!-- Navbar -->
+<nav class="navbar bg-body-tertiary">
+  <div class="container">
+    <a class="navbar-brand" href="#">
+      <img src="public/H2HLogo.png" alt="Logo" style="height: 40px;">
+    </a>
+    <div class="search-bar-container">
+      <form class="search-bar" role="search" (ngSubmit)="onSearchSubmit()" #searchForm="ngForm">
+        <input type="search" placeholder="Rechercher" aria-label="Search" [(ngModel)]="searchKeyword" name="searchKeyword" required>
+        <button type="submit" class="search-btn">
+          <i class="fas fa-search"></i>
+        </button>
+      </form>
+
+      <div class="search-results-dropdown" *ngIf="searchResults.length > 0">
+        <ul>
+          <li *ngFor="let annonce of searchResults">
+            <a href="#">{{ annonce.titreAnnonce }}</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <form class="d-flex mb-2 mb-lg-0">
+      <button class="btn custom-btn me-2" type="button">Je crée une annonce</button>
+      <button class="btn btn-outline-custom" type="button" data-bs-target="#exampleModalToggle" data-bs-toggle="modal">S'inscrire / Se connecter</button>
+    </form>
+  </div>
+</nav>
+
+<!-- Modal d'inscription -->
+<div class="modal fade" id="exampleModalToggle" aria-labelledby="exampleModalToggleLabel" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-md">
+    <div class="modal-content shadow-lg p-4">
+      <div class="d-flex justify-content-between align-items-center">
+        <h2 class="modal-title fw-bold text-center w-100" id="exampleModalToggleLabel">Inscription</h2>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+
+      <div class="modal-body text-center">
+        <form (ngSubmit)="onRegisterSubmit()" #registrationForm="ngForm">
+          <input type="email" name="email" [(ngModel)]="email" placeholder="user@example.com" required class="form-control mb-3">
+
+          <div class="row g-2">
+            <div class="col-md-6 mb-3">
+              <div class="input-group">
+                <span class="input-group-text"><i class="fa-solid fa-user"></i></span>
+                <input type="text" class="form-control" name="nom" [(ngModel)]="nom" placeholder="Nom" required>
+              </div>
+            </div>
+            <div class="col-md-6 mb-3">
+              <div class="input-group">
+                <span class="input-group-text"><i class="fa-solid fa-user"></i></span>
+                <input type="text" class="form-control" name="prenom" [(ngModel)]="prenom" placeholder="Prénom" required>
+              </div>
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <div class="input-group">
+              <span class="input-group-text"><i class="fa-solid fa-lock"></i></span>
+              <input type="password" class="form-control" name="motdepasse" [(ngModel)]="password" placeholder="Mot de passe" required>
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <div class="input-group">
+              <span class="input-group-text"><i class="fa-solid fa-user-circle"></i></span>
+              <input type="text" class="form-control" name="username" [(ngModel)]="username" placeholder="Nom d'utilisateur" required>
+            </div>
+          </div>
+
+          <div class="row g-2">
+            <div class="col-md-6 mb-3">
+              <div class="input-group">
+                <span class="input-group-text"><i class="fa-solid fa-phone"></i></span>
+                <input type="tel" class="form-control" name="numTel" [(ngModel)]="numTel" placeholder="Numéro de téléphone" required>
+              </div>
+            </div>
+            <div class="col-md-6 mb-3">
+              <div class="input-group">
+                <span class="input-group-text"><i class="fa-solid fa-id-card"></i></span>
+                <input type="text" class="form-control" name="cin" [(ngModel)]="cin" placeholder="CIN" required>
+              </div>
+            </div>
+          </div>
+
+          <button class="btn w-100 mt-3 p-2" type="submit" style="background-color: #fd7e14; border-color: #fd7e14; color: white;">S'inscrire</button>
+        </form>
+
+        <div class="d-flex align-items-center my-3">
+          <hr class="flex-grow-1"> <span class="mx-2">OU</span> <hr class="flex-grow-1">
+        </div>
+        <div class="text d-flex align-items-center justify-content-center gap-2">
+          <p class="mb-0">Déjà un compte ?</p>
+          <button class="btn" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal"
+                  style="background-color: transparent; border: 2px solid #fd7e14; color: #fd7e14; padding: 8px 16px; border-radius: 5px;">
+            Se connecter
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+<!-- Modal de connexion -->
+<div class="modal fade" id="exampleModalToggle2" aria-labelledby="exampleModalToggleLabel2" tabindex="-1" style="display: none;" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-md">
+    <div class="modal-content shadow-lg p-4">
+      <div class="d-flex justify-content-between align-items-center">
+        <h2 class="modal-title fw-bold text-center w-100" id="exampleModalToggleLabel2">Se connecter</h2>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body text-center">
+        <form (ngSubmit)="onLoginSubmit()">
+          <div class="mb-3">
+            <div class="input-group">
+              <span class="input-group-text"><i class="fa-solid fa-envelope"></i></span>
+              <input type="email" class="form-control" [(ngModel)]="email" name="email" placeholder="user@example.com" required>
+            </div>
+          </div>
+          <div class="mb-3">
+            <div class="input-group">
+              <span class="input-group-text"><i class="fa-solid fa-lock"></i></span>
+              <input type="password" class="form-control" [(ngModel)]="password" name="password" placeholder="Mot de passe" required>
+            </div>
+          </div>
+          <button class="btn w-100 mt-3 p-2" type="submit" style="background-color: #fd7e14; border-color: #fd7e14; color: white;">
+            <i class="fa-solid fa-sign-in-alt"></i> Se connecter
+          </button>
+        </form>
+        <div class="d-flex align-items-center my-3">
+          <hr class="flex-grow-1"> <span class="mx-2">OU</span> <hr class="flex-grow-1">
+        </div>
+        <div class="text d-flex align-items-center justify-content-center gap-2">
+          <p class="mb-0">Pas encore de compte ?</p>
+          <button class="btn" data-bs-target="#exampleModalToggle" data-bs-toggle="modal" style="background-color: transparent; border: 2px solid #fd7e14; color: #fd7e14; padding: 8px 16px; border-radius: 5px;">S'inscrire</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+<!-- Scripts Bootstrap -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

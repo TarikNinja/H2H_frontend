@@ -1,0 +1,134 @@
+<app-navbar></app-navbar>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+  <title>Exemple de Navigation</title>
+</head>
+<body>
+
+<div class="container my-4">
+  <div class="d-flex">
+    <div class="dropdown me-2">
+      <button class="btn-outline-custom dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+        <i class="bi bi-geo-alt"></i> Emplacement
+      </button>
+      <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+        <li><a class="dropdown-item" href="#">Option 1</a></li>
+        <li><a class="dropdown-item" href="#">Option 2</a></li>
+      </ul>
+    </div>
+
+    <div class="dropdown me-2">
+      <button class="btn-outline-custom dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
+        <i class="bi bi-box"></i> Objets
+      </button>
+      <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
+        <li><a class="dropdown-item" href="#">Option 1</a></li>
+        <li><a class="dropdown-item" href="#">Option 2</a></li>
+      </ul>
+    </div>
+
+    <div class="dropdown me-2">
+      <button class="btn-outline-custom dropdown-toggle" type="button" id="dropdownMenuButton3" data-bs-toggle="dropdown" aria-expanded="false">
+        <i class="bi bi-list"></i> Catégories
+      </button>
+      <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton3">
+        <li><a class="dropdown-item" href="#">Option 1</a></li>
+        <li><a class="dropdown-item" href="#">Option 2</a></li>
+      </ul>
+    </div>
+
+    <button class="btn-outline-custom me-2">
+      <i class="bi bi-x-circle"></i> Non réservé
+    </button>
+
+    <button class="btn-outline-custom me-2">
+      <i class="bi bi-star"></i> H2H+
+    </button>
+
+    <!-- Bouton pour ouvrir le modal -->
+    <button class="btn-outline-custom" data-bs-toggle="modal" data-bs-target="#filterModal">
+      <i class="bi bi-funnel"></i> Plus de filtres
+    </button>
+  </div>
+</div>
+
+<main>
+  <div class="container-fluid bg-transparent my-4 p-3" style="position: relative;">
+    <div class="row row-cols-50 g-3">
+      <div class="col-auto" *ngFor="let annonce of annonces; let i = index">
+        <div class="card h-100 shadow-sm" style="width: 220px;">
+          <a [routerLink]="['/details_annonce', annonce.idAnnonce]" style="display: flex; flex-direction: column; height: 100%;">
+            <img [src]="imageUrls[i]" style="width: 100%; height: 60%; object-fit: cover;">
+            <div class="card-body mt-auto" style="flex: 1; display: flex; flex-direction: column; justify-content: center;">
+              <h5 class="card-title mb-0">{{ annonce.titreAnnonce }}</h5>
+              <div class="clearfix mt-auto">
+                <span class="float-start badge rounded-pill bg-primary">{{ annonce.etatObjet }}</span>
+                <span class="float-end price-hp"><i class="bi bi-geo-alt"></i>{{ annonce.emplacement.city }}</span>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+
+
+
+
+  <!-- Modal de Filtrage -->
+<div class="modal fade" id="filterModal" tabindex="-1" aria-labelledby="filterModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="filterModalLabel">Filtrer les résultats</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="mb-3">
+            <label for="announcementType" class="form-label">Type d'annonce :</label>
+            <div class="d-flex justify-content-center">
+              <button type="button" class="btn-outline-custom me-2">Objet</button>
+              <button type="button" class="btn-outline-custom">Nourriture</button>
+            </div>
+          </div>
+          <fieldset class="mb-3">
+            <legend>État de l'objet</legend>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" id="commeNeuf">
+              <label class="form-check-label" for="commeNeuf">Comme neuf</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" id="bonEtat">
+              <label class="form-check-label" for="bonEtat">Bon état</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" id="etatMoyen">
+              <label class="form-check-label" for="etatMoyen">État moyen</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" id="aBricoler">
+              <label class="form-check-label" for="aBricoler">À bricoler</label>
+            </div>
+          </fieldset>
+        </form>
+      </div>
+      <div class="modal-footer justify-content-center">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Effacer les filtres</button>
+        <button type="button" class="btn-outline-custom">Je valide</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
