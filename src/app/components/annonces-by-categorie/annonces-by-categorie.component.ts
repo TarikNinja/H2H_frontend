@@ -1,38 +1,40 @@
 import { Component } from '@angular/core';
-import {Annonce, Categorie} from '../../annonce';
-import {DomSanitizer, SafeUrl} from '@angular/platform-browser';
 import {AnnonceService} from '../../services/annonce.service';
+import {ActivatedRoute} from '@angular/router';
+import {Annonce, Categorie} from '../../annonce';
 import {ImageService} from '../../services/image.service';
+import {DomSanitizer, SafeUrl} from '@angular/platform-browser';
 import {CategorieService} from '../../services/categorie.service';
 
 @Component({
-  selector: 'app-list-annonce',
-  templateUrl: './list-annonce.component.html',
-  styleUrl: './list-annonce.component.css'
+  selector: 'app-annonces-by-categorie',
+  templateUrl: './annonces-by-categorie.component.html',
+  styleUrl: './annonces-by-categorie.component.css'
 })
-export class ListAnnonceComponent {
-  annonces: Annonce[] = [];
+export class AnnoncesByCategorieComponent {
+
+  annonce: Annonce[] = [];
   imageUrls: SafeUrl[] = [];
   categories: Categorie[] = [];
-  selectedCategorie: Categorie | null = null;
-
   constructor(
+    private route: ActivatedRoute,
     private annonceService: AnnonceService,
     private imageService: ImageService,
     private sanitizer: DomSanitizer,
     private categorieService: CategorieService
   ) { }
-
-
   ngOnInit() {
-    this.getAnnonces();
-    this.getCategories()
+    this.route.params.subscribe(params => {
+      const idCategorie = params['idCategorie'];
+      this.getAnnoncesByCategorie(idCategorie);
+    });
+    this.getCategories();
   }
 
-  getAnnonces() {
-    this.annonceService.getAllAnnonces().subscribe(
-      (data) => {
-        this.annonces = data;
+  getAnnoncesByCategorie(idCategorie: number) {
+    this.annonceService.getAnnoncesByCategorie(idCategorie).subscribe(
+      (annonces) => {
+        this.annonce = annonces;
         this.getFirstImageData();
       },
       (error) => {
@@ -40,9 +42,8 @@ export class ListAnnonceComponent {
       }
     );
   }
-
   getFirstImageData() {
-    this.annonces.forEach((annonce) => {
+    this.annonce.forEach((annonce) => {
       if (annonce.images.length > 0) {
         this.imageService.getImageData(annonce.images[0]).subscribe(
           (response) => {
@@ -65,7 +66,6 @@ export class ListAnnonceComponent {
       }
     });
   }
-
   getCategories(): void {
     this.categorieService.getAllCategories().subscribe(
       (data) => {
@@ -76,5 +76,4 @@ export class ListAnnonceComponent {
       }
     );
   }
-
 }

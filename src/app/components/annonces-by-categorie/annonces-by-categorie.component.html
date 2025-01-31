@@ -57,7 +57,7 @@
 <main>
   <div class="container bg-transparent my-2 p-3" style="position: relative;">
     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-5 g-5">
-      <div class="col" *ngFor="let annonce of annonces; let i = index">
+      <div class="col" *ngFor="let annonce of annonce; let i = index">
         <div class="card h-100 shadow-sm" style="border: none; border-radius: 10px; overflow: hidden; transition: transform 0.3s ease, box-shadow 0.3s ease;">
           <a [routerLink]="['/details_annonce', annonce.idAnnonce]" style="text-decoration: none; color: inherit;">
             <div style="position: relative; overflow: hidden;">

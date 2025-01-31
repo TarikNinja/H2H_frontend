@@ -14,6 +14,8 @@ import { CategorieComponent } from './components/categorie/categorie.component';
 import { CreateAnnonceComponent } from './components/create-annonce/create-annonce.component';
 import { HomeUserComponent } from './components/home-user/home-user.component';
 import { NavbarUserComponent } from './components/navbar-user/navbar-user.component';
+import { AnnoncesByCategorieComponent } from './components/annonces-by-categorie/annonces-by-categorie.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +28,8 @@ import { NavbarUserComponent } from './components/navbar-user/navbar-user.compon
     CreateAnnonceComponent,
     HomeUserComponent,
     NavbarUserComponent,
+    AnnoncesByCategorieComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,

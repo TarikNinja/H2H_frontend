@@ -2,7 +2,8 @@ import { Component } from '@angular/core';
 import {DomSanitizer, SafeUrl} from '@angular/platform-browser';
 import {AnnonceService} from '../../services/annonce.service';
 import {ImageService} from '../../services/image.service';
-import {Annonce} from '../../annonce';
+import {Annonce, Categorie} from '../../annonce';
+import {CategorieService} from '../../services/categorie.service';
 
 @Component({
   selector: 'app-list-annonce-nonreserver',
@@ -12,15 +13,18 @@ import {Annonce} from '../../annonce';
 export class ListAnnonceNonreserverComponent {
   imageUrls: SafeUrl[] = [];
   annonces: Annonce[] = [];
+  categories: Categorie[] = [];
 
   constructor(
     private annonceService: AnnonceService,
     private imageService: ImageService,
-    private sanitizer: DomSanitizer
+    private sanitizer: DomSanitizer,
+    private categorieService: CategorieService
   ) { }
 
   ngOnInit() {
-    this.getAnnoncesNonReservees()
+    this.getAnnoncesNonReservees();
+    this.getCategories();
   }
 
   getAnnoncesNonReservees() {
@@ -58,6 +62,16 @@ export class ListAnnonceNonreserverComponent {
         this.imageUrls.push(''); // Ajouter une chaîne vide si l'annonce n'a pas d'image
       }
     });
+  }
+  getCategories(): void {
+    this.categorieService.getAllCategories().subscribe(
+      (data) => {
+        this.categories = data;
+      },
+      (error) => {
+        console.error('Erreur lors de la récupération des catégories :', error);
+      }
+    );
   }
 
 }

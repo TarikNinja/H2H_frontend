@@ -31,16 +31,18 @@
       </ul>
     </div>
 
+    <!-- annonce-list.component.html -->
     <div class="dropdown me-2">
       <button class="btn-outline-custom dropdown-toggle" type="button" id="dropdownMenuButton3" data-bs-toggle="dropdown" aria-expanded="false">
         <i class="bi bi-list"></i> Catégories
       </button>
       <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton3">
         <li *ngFor="let categorie of categories">
-          <a class="dropdown-item" href="#">{{ categorie.nomCategorie }}</a>
+          <a class="dropdown-item" [routerLink]="['/annonces-by-categorie', categorie.idCategorie]">{{ categorie.nomCategorie }}</a>
         </li>
       </ul>
     </div>
+
 
     <button class="btn-outline-custom me-2" [routerLink]="['/annonces-non-reservees']">
       <i class="bi bi-x-circle"></i> Non réservé

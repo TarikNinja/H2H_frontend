@@ -7,17 +7,19 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class AnnonceService {
-  private apiUrl = 'http://localhost:8080/api/annonce/getAllAnnonces';
-  private apiUrl2 = 'http://localhost:8080/api/annonce/getAnnoncesNonReservees';
+  private apiUrl = 'http://localhost:8080/api/annonce';
 
   constructor(private http: HttpClient) {}
 
   getAllAnnonces(): Observable<Annonce[]> {
-    return this.http.get<Annonce[]>(this.apiUrl);
+    return this.http.get<Annonce[]>(`${this.apiUrl}/getAllAnnonces`);
   }
 
   getAnnoncesNonReservees(): Observable<Annonce[]> {
-    return this.http.get<Annonce[]>(this.apiUrl2);
+    return this.http.get<Annonce[]>(`${this.apiUrl}/getAnnoncesNonReservees`);
   }
 
+  getAnnoncesByCategorie(idCategorie: number): Observable<Annonce[]> {
+    return this.http.get<Annonce[]>(`${this.apiUrl}/getAnnoncesByCategorie/${idCategorie}`);
+  }
 }
