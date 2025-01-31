@@ -8,7 +8,7 @@ export interface Annonce {
   datePub: Date;
   estReserve: boolean;
   //user: User;
-  //categorie: Categorie;
+  categorie: Categorie;
   emplacement: Emplacement;
 }
 
@@ -32,11 +32,10 @@ export enum EtatObjet {
 //   // Autres propriétés de l'utilisateur
 // }
 
-// export class Categorie {
-//   idCategorie: number;
-//   nomCategorie: string;
-//   // Autres propriétés de la catégorie
-// }
+export class Categorie {
+   idCategorie?: number;
+   nomCategorie?: string;
+ }
 
 export class Emplacement {
   idEmplacement?: number;

@@ -8,12 +8,24 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import {FormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import {NgOptimizedImage} from '@angular/common';
+import { ListAnnonceComponent } from './components/list-annonce/list-annonce.component';
+import { ListAnnonceNonreserverComponent } from './components/list-annonce-nonreserver/list-annonce-nonreserver.component';
+import { CategorieComponent } from './components/categorie/categorie.component';
+import { CreateAnnonceComponent } from './components/create-annonce/create-annonce.component';
+import { HomeUserComponent } from './components/home-user/home-user.component';
+import { NavbarUserComponent } from './components/navbar-user/navbar-user.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    NavbarComponent
+    NavbarComponent,
+    ListAnnonceComponent,
+    ListAnnonceNonreserverComponent,
+    CategorieComponent,
+    CreateAnnonceComponent,
+    HomeUserComponent,
+    NavbarUserComponent,
   ],
   imports: [
     BrowserModule,
